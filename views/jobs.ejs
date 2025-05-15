@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Jobs - Job Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Job Portal</h1>
+            <div>
+                <a href="/">Home</a>
+                <a href="/jobs">Browse Jobs</a>
+                <a href="/employer/post-job">Post a Job</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <form action="/jobs" method="GET">
+                <input type="text" name="search" placeholder="Search jobs...">
+                <input type="text" name="location" placeholder="Location">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section class="jobs-list">
+            <h2>Available Jobs</h2>
+            <% if (jobs.length === 0) { %>
+                <p>No jobs found.</p>
+            <% } else { %>
+                <% jobs.forEach(job => { %>
+                    <div class="job-listing">
+                        <h3><%= job.title %></h3>
+                        <p class="company"><%= job.company %></p>
+                        <p class="location"><%= job.location %></p>
+                        <p class="description"><%= job.description.substring(0, 200) %>...</p>
+                        <a href="/jobs/<%= job.id %>" class="view-job">View Details</a>
+                    </div>
+                <% }); %>
+            <% } %>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Job Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

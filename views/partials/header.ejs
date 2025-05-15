@@ -1,0 +1,49 @@
+<header>
+    <nav>
+        <h1>Job Portal</h1>
+        <button class="menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/jobs">Browse Jobs</a>
+            <% if (user) { %>
+                <a href="/employer/post-job">Post a Job</a>
+            <% } %>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <div class="mobile-menu">
+            <a href="/">Home</a>
+            <a href="/jobs">Browse Jobs</a>
+            <% if (user) { %>
+                <a href="/employer/post-job">Post a Job</a>
+            <% } %>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <div class="user-section">
+            <% if (user) { %>
+                <div class="user-profile" onclick="toggleUserDropdown()">
+                    <% if (user.avatar && user.avatar !== '/images/default-avatar.png') { %>
+                        <img src="<%= user.avatar %>" alt="Profile">
+                    <% } else { %>
+                        <div class="user-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    <% } %>
+                    <div class="user-dropdown">
+                        <a href="/my-applications">My Applications</a>
+                        <a href="/auth/logout">Logout</a>
+                    </div>
+                </div>
+            <% } else { %>
+                <a href="/auth/login">Sign In</a>
+                <a href="/auth/register">Sign Up</a>
+            <% } %>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+</header>

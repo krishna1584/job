@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= job.title %> - Job Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Job Portal</h1>
+            <div>
+                <a href="/">Home</a>
+                <a href="/jobs">Browse Jobs</a>
+                <a href="/employer/post-job">Post a Job</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="job-details">
+            <h2><%= job.title %></h2>
+            <div class="job-info">
+                <p class="company"><strong>Company:</strong> <%= job.company %></p>
+                <p class="location"><strong>Location:</strong> <%= job.location %></p>
+                <p class="posted"><strong>Posted:</strong> <%= job.createdAt.toLocaleDateString() %></p>
+            </div>
+
+            <div class="job-description">
+                <h3>Job Description</h3>
+                <p><%= job.description %></p>
+            </div>
+
+            <div class="job-requirements">
+                <h3>Requirements</h3>
+                <p><%= job.requirements %></p>
+            </div>
+
+            <div class="application-form">
+                <h3>Apply for this Position</h3>
+                <form action="/jobs/<%= job.id %>/apply" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resume">Resume (PDF)</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf" required>
+                    </div>
+
+                    <button type="submit">Submit Application</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Job Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

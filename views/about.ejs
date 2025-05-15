@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Job Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header', { user: user }) %>
+
+    <main>
+        <section class="about-section">
+            <h2>About Job Portal</h2>
+            <p>Welcome to Job Portal, your trusted partner in career development and talent acquisition. Since our inception in 2025, we've been dedicated to bridging the gap between talented professionals and outstanding career opportunities across India.</p>
+            
+            <h3>Our Mission</h3>
+            <p>To create a seamless, efficient, and user-friendly platform that connects job seekers with their dream careers and helps employers find their perfect candidates in the Indian job market.</p>
+            
+            <h3>Why Choose Us?</h3>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>Quality Listings</h4>
+                    <p>We verify all job postings to ensure quality and legitimacy.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Secure Platform</h4>
+                    <p>Your data security and privacy are our top priorities.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Growing Community</h4>
+                    <p>Join thousands of successful professionals who found their career through us.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script>
+        // Set initial theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</body>
+</html>

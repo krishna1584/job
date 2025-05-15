@@ -1,0 +1,68 @@
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>Connecting talented professionals with amazing opportunities since 2023.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/jobs">Find Jobs</a></li>
+                <li><a href="/employer/post-job">Post a Job</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li><i class="fas fa-envelope"></i> support@jobportal.com</li>
+                <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 Job Portal. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        const themeIcon = document.querySelector('.theme-toggle i');
+        themeIcon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+
+    function toggleUserDropdown() {
+        const dropdown = document.querySelector('.user-dropdown');
+        dropdown.classList.toggle('active');
+    }
+
+    function toggleMobileMenu() {
+        const mobileMenu = document.querySelector('.mobile-menu');
+        mobileMenu.classList.toggle('active');
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.user-profile')) {
+            const dropdown = document.querySelector('.user-dropdown');
+            if (dropdown) dropdown.classList.remove('active');
+        }
+        if (!e.target.closest('.menu-toggle') && !e.target.closest('.mobile-menu')) {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+        }
+    });
+
+    // Set initial theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    const themeIcon = document.querySelector('.theme-toggle i');
+    themeIcon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+</script>

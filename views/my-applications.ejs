@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications - Job Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header', { user: user }) %>
+
+    <main>
+        <section class="my-applications">
+            <h2>My Applications</h2>
+            <% if (applications.length === 0) { %>
+                <div class="no-applications">
+                    <p>You haven't applied to any jobs yet.</p>
+                    <a href="/jobs" class="button">Browse Jobs</a>
+                </div>
+            <% } else { %>
+                <div class="applications-list">
+                    <% applications.forEach(application => { %>
+                        <div class="application-card">
+                            <h3><%= application.job.title %></h3>
+                            <p class="company"><%= application.job.company %></p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> <%= application.job.location %></p>
+                            <p class="applied-date">Applied on: <%= new Date(application.appliedAt).toLocaleDateString() %></p>
+                            <a href="/jobs/<%= application.jobId %>" class="view-job">View Job Details</a>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
