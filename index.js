@@ -12,8 +12,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const MongoStore = require('connect-mongo');
 const fs = require('fs');
 
-// Load User model
-const User = require('./models/User');
+// Load User model with corrected path
+const User = require('./views/auth/models/User.js');
 
 // Load environment variables
 dotenv.config();
